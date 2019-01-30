@@ -6,9 +6,10 @@ class Post extends Component {
     super(props);
 
     this.state = {
-      userName: null,
-      text: null,
-      roomId : null
+      userName: '',
+      text: '',
+      roomId : 1
+      // roomId : null
     };
   }
 
@@ -17,25 +18,50 @@ class Post extends Component {
   }
 
   _writeChat = e => { 
-
+    this.setState({
+      ...this.state,
+      [e.target.name]: e.target.value
+    })
   }
   
   _sendChat = async () => { 
     const { userName, text, roomId } = this.state;
-
+    
     await axios.post('post/post', { userName, text, roomId })
       .then(res => { 
         console.log('send chat complete')
       })
+      .catch(res => { 
+        console.log('sending failed')
+      })
   }
 
-  render() { 
+  _chatRender = () => { 
+
+  }
+
+  render () { 
     return (
       <React.Fragment>
-        <input type='text' placeholder='username'/>
-        <input type='text' placeholder='text'/>
-        <input type='text' placeholder='roomname'/>
-        <input type='submit' value="Submit" onClick={this._sendChat} />
+        <input
+          type='text'
+          placeholder='username'
+          name={'userName'}
+          value={this.state.userName}
+          onChange={this._writeChat}
+        />
+        <input
+          type='text'
+          placeholder='text'
+          name={'text'}
+          value={this.state.text}
+          onChange={this._writeChat}
+        />
+        {/* <input type='text' placeholder='roomname'/> */}
+        <input
+          type='submit'
+          value="Submit"
+          onClick={this._sendChat} />
         <div></div>
       </React.Fragment>
     );
