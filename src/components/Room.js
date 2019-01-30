@@ -19,8 +19,14 @@ class Room extends Component {
   render() { 
     return ( 
       <React.Fragment>
-        <input type="text" placeholder='roomname' />
-        <input type="submit" value="Room Select" />
+        <input
+          type="text"
+          placeholder='roomname'
+        />
+        <input
+          type="submit"
+          value="Room Select"
+        />
       </React.Fragment>
     );
   }
