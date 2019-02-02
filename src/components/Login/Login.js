@@ -5,9 +5,18 @@ class Login extends Component {
   constructor(props) { 
     super(props);
 
-    this.state = {};
+    this.state = {
+      usersId: '',
+      password: ''
+    };
   }
   
+  componentDidMount() {
+    
+  }
+
+
+
   render() { 
     return (
       <React.Fragment>

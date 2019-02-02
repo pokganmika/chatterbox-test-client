@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 
-import Sign from '../components/Signup';
+import Sign from '../components/Signup/Signup';
 
 class Signup extends Component {
   constructor(props) { 
