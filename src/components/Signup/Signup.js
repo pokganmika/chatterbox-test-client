@@ -28,6 +28,10 @@ class Signup extends Component {
     await axios.post('users/signup', { usersId, password })
       .then(res => { 
         console.log('[+] 유저 가입 성공')
+        // history를 사용하여 유저를 가입시킴?
+        // history는 외부에서 받아 import해서 사용할 수도 있고
+        // 만들어 사용도 가능??
+        // redirect
       })
       .catch(res => { 
         console.log('[-] 유저 가입 실패')
@@ -45,7 +49,7 @@ class Signup extends Component {
           onChange={this._writeAccount}
         /><br />
         <input
-          type='text'
+          type='password'
           placeholder='password'
           name={'password'}
           value={this.state.password}
