@@ -8,6 +8,7 @@ class Post extends Component {
     this.state = {
       userName: '',
       text: '',
+      texts: [],
       roomId : 1
       // roomId : null
     };
