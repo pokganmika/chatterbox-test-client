@@ -8,14 +8,20 @@ import Login from './routes/Login';
 import Signup from './routes/Signup';
 
 class App extends Component {
+  constructor(props) { 
+    super(props);
+
+    this.state = {};
+  }
+
   render() {
     return (
       <Router>
-        <div>
+        <React.Fragment>
           <Route exact path='/' component={Home}/>
           <Route path='/users/login' component={Login}/>
           <Route path='/users/signup' component={Signup}/>
-        </div>
+        </React.Fragment>
       </Router>
     );
   }

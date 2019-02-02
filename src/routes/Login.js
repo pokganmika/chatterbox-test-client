@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 
-import Log from '../components/Login';
+import Log from '../components/Login/Login';
 
 class Login extends Component {
   constructor(props) { 

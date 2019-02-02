@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import Room from '../components/Room';
-import Post from '../components/Post';
+import Room from '../components/Home/Room';
+import Post from '../components/Home/Post';
 
 class Home extends Component {
   constructor(props) { 
