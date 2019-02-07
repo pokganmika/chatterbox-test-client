@@ -9,28 +9,39 @@ class PostSubmit extends Component {
       userName: '',
       text: '',
       texts: [],
+      chats: [],
       roomId : 1
       // roomId : null
     };
   }
 
-  componentDidMount = () => {
-    
+  async componentDidMount() {
+    const { data } = await axios.get('/post');
+    // console.log('이것이 다타 : ',data)
+    this.setState({
+      chats: data
+    })
+    console.log('Chat => this.state.chat : ',this.state.chats)
   }
 
   _writeChat = e => { 
     this.setState({
-      ...this.state,
       [e.target.name]: e.target.value
     })
   }
   
   _sendChat = async () => { 
     const { userName, text, roomId } = this.state;
-    
+    // const leng = chats.length;
     await axios.post('/post', { userName, text, roomId })
-      .then(res => { 
+      .then(async res => { 
         console.log('send chat complete')
+
+        const { data } = await axios.get('/post')
+        this.setState({
+          chats: data
+        })
+
       })
       .catch(res => { 
         console.log('sending failed')
@@ -38,10 +49,19 @@ class PostSubmit extends Component {
   }
 
   _chatRender = () => { 
-
+    const { chats } = this.state;
+    return (
+      chats.map(chat => (
+        <ChatList
+        name={chat.userName}
+        text={chat.text}
+        />
+      ))
+    );
   }
 
   render () { 
+    const { chats } = this.state;
     return (
       <React.Fragment>
         <input
@@ -63,10 +83,19 @@ class PostSubmit extends Component {
           type='submit'
           value="Submit"
           onClick={this._sendChat} />
-        <div></div>
+        {chats.length !== 0 ? this._chatRender() : 'Loading'}
       </React.Fragment>
     );
   }
+}
+
+const ChatList = ({ name, text}) => { 
+  return (
+    <React.Fragment>
+      <div>{name}</div>
+      <div>{text}</div>
+    </React.Fragment>
+  );
 }
 
 export default PostSubmit;

@@ -1,67 +1,60 @@
 import React, { Component, Fragment } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 
-import Room from '../components/Home/Room';
-import Post from '../components/Home/Post';
+import Room from '../components/Chat/Room';
+import Post from '../components/Chat/Post';
 
 class Chat extends Component {
-  constructor(props) { 
-    super(props);
+  // constructor(props) { 
+  //   super(props);
 
-    this.state = {
-      chats: []
-    };
-  }
+  //   this.state = {
+  //     chats: []
+  //   };
+  // }
 
-  async componentDidMount() {
-    const { data } = await axios.get('/post');
-    // console.log('이것이 다타 : ',data)
-    this.setState({
-      ...this.state,
-      chats: data
-    })
-    console.log('Chat => this.state.chat : ',this.state.chats)
-  }
+  // async componentDidMount() {
+  //   const { data } = await axios.get('/post');
+  //   // console.log('이것이 다타 : ',data)
+  //   this.setState({
+  //     ...this.state,
+  //     chats: data
+  //   })
+  //   console.log('Chat => this.state.chat : ',this.state.chats)
+  // }
 
-  _chatRender = () => { 
-    const { chats } = this.state;
-    // if (chats.length !== 0) { 
-    //   return (
-        
-    //   );
-    // }
-    return (
-      chats.map(chat => {
-        return (
-          <ChatList
-          name={chat.userName}
-          text={chat.text}
-          />
-        );
-      })
-    );
-  }
+  // _chatRender = () => { 
+  //   const { chats } = this.state;
+  //   return (
+  //     chats.map(chat => (
+  //       <ChatList
+  //       name={chat.userName}
+  //       text={chat.text}
+  //       />
+  //     ))
+  //   );
+  // }
 
   render () { 
-    const { chats } = this.state; 
+    // const { chats } = this.state; 
     return (
       <Fragment>
         <h1>Chat</h1>
         <Room /><br />
         <Post />
-        {chats.length !== 0 ? this._chatRender() : 'Loading'}
+        {/* {chats.length !== 0 ? this._chatRender() : 'Loading'} */}
       </Fragment>
     );
   }
 }
 
-const ChatList = ({ name, text}) => { 
-  return (
-    <React.Fragment>
-      <div>{name}</div>
-      <div>{text}</div>
-    </React.Fragment>
-  );
-}
+// const ChatList = ({ name, text}) => { 
+//   return (
+//     <React.Fragment>
+//       <div>{name}</div>
+//       <div>{text}</div>
+//     </React.Fragment>
+//   );
+// }
 
 export default Chat;
