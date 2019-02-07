@@ -28,7 +28,7 @@ class PostSubmit extends Component {
   _sendChat = async () => { 
     const { userName, text, roomId } = this.state;
     
-    await axios.post('post/post', { userName, text, roomId })
+    await axios.post('/post', { userName, text, roomId })
       .then(res => { 
         console.log('send chat complete')
       })
