@@ -49,6 +49,8 @@ class Signup extends Component {
   }
 
   render () { 
+    console.log('이것이 히스토리 : ', this.props.history)
+
     if (this.state.signComplete === true) { 
       return <Redirect to='/users/login' />
     }

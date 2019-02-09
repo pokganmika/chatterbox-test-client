@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
+
+import ChatCard from '../Common/ChatCard';
 
 class PostSubmit extends Component {
   constructor(props) { 
@@ -32,7 +35,6 @@ class PostSubmit extends Component {
   
   _sendChat = async () => { 
     const { userName, text, roomId } = this.state;
-    // const leng = chats.length;
     await axios.post('/post', { userName, text, roomId })
       .then(async res => { 
         console.log('send chat complete')
@@ -51,7 +53,7 @@ class PostSubmit extends Component {
   _chatRender = () => { 
     const { chats } = this.state;
     return (
-      chats.map(chat => (
+      chats.reverse().map(chat => (
         <ChatList
         name={chat.userName}
         text={chat.text}
@@ -92,10 +94,18 @@ class PostSubmit extends Component {
 const ChatList = ({ name, text}) => { 
   return (
     <React.Fragment>
-      <div>{name}</div>
-      <div>{text}</div>
+      <DivChat>
+        <ChatCard
+          name={name}
+          text={text}
+        />
+      </DivChat>
     </React.Fragment>
   );
 }
+
+const DivChat = styled.div`
+  margin: 1rem;
+`; 
 
 export default PostSubmit;
