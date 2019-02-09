@@ -19,7 +19,7 @@ class PostSubmit extends Component {
   }
 
   async componentDidMount() {
-    const { data } = await axios.get('/post');
+    const { data } = await axios.get('/api/post');
     // console.log('이것이 다타 : ',data)
     this.setState({
       chats: data
@@ -35,17 +35,17 @@ class PostSubmit extends Component {
   
   _sendChat = async () => { 
     const { userName, text, roomId } = this.state;
-    await axios.post('/post', { userName, text, roomId })
+    await axios.post('/api/post', { userName, text, roomId })
       .then(async res => { 
         console.log('send chat complete')
 
-        const { data } = await axios.get('/post')
+        const { data } = await axios.get('/api/post')
         this.setState({
           chats: data
         })
 
       })
-      .catch(res => { 
+      .catch(err => { 
         console.log('sending failed')
       })
   }
@@ -93,14 +93,12 @@ class PostSubmit extends Component {
 
 const ChatList = ({ name, text}) => { 
   return (
-    <React.Fragment>
-      <DivChat>
-        <ChatCard
-          name={name}
-          text={text}
-        />
-      </DivChat>
-    </React.Fragment>
+    <DivChat>
+      <ChatCard
+        name={name}
+        text={text}
+      />
+    </DivChat>
   );
 }
 

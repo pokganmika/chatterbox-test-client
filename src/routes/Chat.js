@@ -5,16 +5,16 @@ import Room from '../components/Chat/Room';
 import Post from '../components/Chat/Post';
 
 class Chat extends Component {
-  // constructor(props) { 
-  //   super(props);
+  constructor(props) { 
+    super(props);
 
-  //   this.state = {
-  //     chats: []
-  //   };
-  // }
+    this.state = {
+      
+    };
+  }
 
   // async componentDidMount() {
-  //   const { data } = await axios.get('/post');
+  //   const { data } = await axios.get('/api/post');
   //   // console.log('이것이 다타 : ',data)
   //   this.setState({
   //     ...this.state,
