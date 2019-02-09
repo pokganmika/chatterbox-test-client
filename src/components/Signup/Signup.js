@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 class Signup extends Component {
@@ -7,7 +8,8 @@ class Signup extends Component {
 
     this.state = {
       usersId: '',
-      password: ''
+      password: '',
+      signComplete: false
     };
   }
 
@@ -24,20 +26,33 @@ class Signup extends Component {
   _registerAccount = async () => { 
     const { usersId, password } = this.state;
 
-    await axios.post('users/signup', { usersId, password })
+    await axios.post('/users/signup', { usersId, password })
       .then(res => { 
-        console.log('[+] 유저 가입 성공')
+        console.log('[+] 유저 가입 성공');
         // history를 사용하여 유저를 가입시킴?
         // history는 외부에서 받아 import해서 사용할 수도 있고
         // 만들어 사용도 가능??
         // redirect
+
+        //-----
+        // res.data === '가입 완료' && this.props.history.push('/users/login')
+        // console.log('이것이 다타 : ',res.data)
+        // console.log('이것이 다타 : ',this.props.history)
+        //------
+        this.setState({
+          signComplete: true
+        })
       })
-      .catch(res => { 
+      .catch(err => { 
         console.log('[-] 유저 가입 실패')
       })
   }
 
-  render() { 
+  render () { 
+    if (this.state.signComplete === true) { 
+      return <Redirect to='/users/login' />
+    }
+
     return (
       <React.Fragment>
         <input
