@@ -26,7 +26,7 @@ class Signup extends Component {
   _registerAccount = async () => { 
     const { usersId, password } = this.state;
 
-    await axios.post('/users/signup', { usersId, password })
+    await axios.post('/api/users/signup', { usersId, password })
       .then(res => { 
         console.log('[+] 유저 가입 성공');
         // history를 사용하여 유저를 가입시킴?
