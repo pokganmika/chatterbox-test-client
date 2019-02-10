@@ -20,7 +20,7 @@ class Room extends Component {
     this.setState({
       rooms: data
     })
-    console.log('Room => this.state.rooms : ', this.state.rooms)
+    // console.log('Room => this.state.rooms : ', this.state.rooms)
   }
 
   // _writeRoom = e => { 
@@ -55,7 +55,6 @@ class Room extends Component {
   }
 
   render () { 
-    console.log('----find function : ',this.props);
     const { rooms } = this.state;
     return ( 
       <React.Fragment>

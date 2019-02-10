@@ -22,7 +22,10 @@ class Home extends Component {
     return (
       <React.Fragment>
         <h1>Chatter Box</h1>
-        <img src='https://pilbox.themuse.com/image.jpg?url=https%3A%2F%2Fassets.themuse.com%2Fuploaded%2Fattachments%2F20883.jpg%3Fv%3D63468a40704a57e39eccca67c4649865ab0aafc20c3e9d7867ed4d9d32194106&h=367&prog=1' />
+        <img 
+        src='https://pilbox.themuse.com/image.jpg?url=https%3A%2F%2Fassets.themuse.com%2Fuploaded%2Fattachments%2F20883.jpg%3Fv%3D63468a40704a57e39eccca67c4649865ab0aafc20c3e9d7867ed4d9d32194106&h=367&prog=1' 
+        alt="description of image" 
+        />
       </React.Fragment>  
     );
   }
