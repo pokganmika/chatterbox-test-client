@@ -23,11 +23,11 @@ class Room extends Component {
     console.log('Room => this.state.rooms : ', this.state.rooms)
   }
 
-  _writeRoom = e => { 
-    this.setState({
-      [e.target.name]: e.target.value
-    })
-  }
+  // _writeRoom = e => { 
+  //   this.setState({
+  //     [e.target.name]: e.target.value
+  //   })
+  // }
 
   _createRoom = async () => { 
     const { roomName } = this.state;
@@ -55,6 +55,7 @@ class Room extends Component {
   }
 
   render () { 
+    console.log('----find function : ',this.props);
     const { rooms } = this.state;
     return ( 
       <React.Fragment>
@@ -63,7 +64,7 @@ class Room extends Component {
           placeholder='roomname'
           name={'roomName'}
           value={this.state.roomName}
-          onChange={this._writeRoom}
+          onChange={this.props._writeRoom}
         />
         <input
           type="submit"

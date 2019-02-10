@@ -9,52 +9,25 @@ class Chat extends Component {
     super(props);
 
     this.state = {
-      
+      roomName: ''
     };
   }
-
-  // async componentDidMount() {
-  //   const { data } = await axios.get('/api/post');
-  //   // console.log('이것이 다타 : ',data)
-  //   this.setState({
-  //     ...this.state,
-  //     chats: data
-  //   })
-  //   console.log('Chat => this.state.chat : ',this.state.chats)
-  // }
-
-  // _chatRender = () => { 
-  //   const { chats } = this.state;
-  //   return (
-  //     chats.map(chat => (
-  //       <ChatList
-  //       name={chat.userName}
-  //       text={chat.text}
-  //       />
-  //     ))
-  //   );
-  // }
+  
+  _writeRoom = e => { 
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
 
   render () { 
-    // const { chats } = this.state; 
     return (
       <Fragment>
         <h1>Chat</h1>
-        <Room /><br />
+        <Room _writeRoom={this._writeRoom} /><br />
         <Post />
-        {/* {chats.length !== 0 ? this._chatRender() : 'Loading'} */}
       </Fragment>
     );
   }
 }
-
-// const ChatList = ({ name, text}) => { 
-//   return (
-//     <React.Fragment>
-//       <div>{name}</div>
-//       <div>{text}</div>
-//     </React.Fragment>
-//   );
-// }
 
 export default Chat;
