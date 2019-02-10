@@ -24,7 +24,8 @@ class Chat extends Component {
       <Fragment>
         <h1>Chat</h1>
         <Room _writeRoom={this._writeRoom} /><br />
-        <Post />
+        {/* <Post roomName={this.state.roomName}/> */}
+        <Post roomName={this.state.roomName && this.state.roomName}/>
       </Fragment>
     );
   }
